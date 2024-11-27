@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { Authenticator } from "@aws-amplify/ui-react";
-
+//<Authenticator hideSignUp={true}> 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Authenticator hideSignUp={true}>
+    <Authenticator hideSignUp={true}> 
       <App />
     </Authenticator>
   </React.StrictMode>
