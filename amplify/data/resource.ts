@@ -37,7 +37,7 @@ const schema = a
 
     */
 
-    VCOM_SMS_BESS_Data: a.customType({
+    VCOM_SMS_BESS_Data01: a.customType({
       index: a.string().required(),
       commsLost: a.integer(),
       commsLostCounter: a.integer(),
@@ -57,7 +57,7 @@ const schema = a
     .authorization(allow => [allow.publicApiKey()])
     .handler(
       a.handler.custom({
-        dataSource: "VCOM_SMS_BESS_DataTable",
+        dataSource: "VCOM_SMS_BESS_Data01Table",
         entry: "./getVcomBessData.js",
       })
     ),

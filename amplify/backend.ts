@@ -16,11 +16,11 @@ const externalDataSourcesStack = backend.createStack("MyExternalDataSources");
 const externalTable = aws_dynamodb.Table.fromTableName(
   externalDataSourcesStack,
   "MyExternalVcomBessDataTable",
-  "VCOM_SMS_BESS_DataTable"
+  "VCOM_SMS_BESS_Data01Table"
 );
 
 
 backend.data.addDynamoDbDataSource(
-  "VCOM_SMS_BESS_DataTable",
+  "VCOM_SMS_BESS_Data01Table",
   externalTable
 );
