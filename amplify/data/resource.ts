@@ -9,8 +9,8 @@ const schema = a
       })
       .authorization((allow) => [
         allow.ownerDefinedIn("profileOwner"),
-      ]),        
-
+      ]),  
+            
     /*
     Post: a.customType({
       id: a.id().required(),
@@ -22,6 +22,19 @@ const schema = a
       downs: a.integer(),
       version: a.integer(),
     }),
+      
+    getPost: a
+      .query()
+      .arguments({ id: a.id().required() })
+      .returns(a.ref("Post"))
+      .authorization(allow => [allow.publicApiKey()])
+      .handler(
+        a.handler.custom({
+          dataSource: "ExternalPostTableDataSource",
+          entry: "./getPost.js",
+        })
+      ),      
+
     */
 
     VCOM_SMS_BESS_Data: a.customType({
@@ -35,7 +48,19 @@ const schema = a
       soc: a.integer(),
       socAbbreviation: a.string().required(),
       socMinLevel: a.integer()
-    })
+    }),
+      
+    getVcomBessData: a
+    .query()
+    .arguments({ index: a.integer().required() })
+    .returns(a.ref("VCOM_SMS_BESS_Data"))
+    .authorization(allow => [allow.publicApiKey()])
+    .handler(
+      a.handler.custom({
+        dataSource: "VCOM_SMS_BESS_DataTable",
+        entry: "./getVcomBessData.js",
+      })
+    ),
 
   })
   .authorization((allow) => [allow.resource(postConfirmation)]);
