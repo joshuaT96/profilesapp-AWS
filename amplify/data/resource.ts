@@ -53,7 +53,7 @@ const schema = a
     getVcomBessData: a
     .query()
     .arguments({ index: a.integer().required() })
-    .returns(a.ref("VCOM_SMS_BESS_Data"))
+    .returns(a.ref("VCOM_SMS_BESS_Data01"))
     .authorization(allow => [allow.publicApiKey()])
     .handler(
       a.handler.custom({
